@@ -1,0 +1,24 @@
+## Interface: 11200
+## Title: |CFF3399FFVanilla Korean Core
+## Title-koKR: |CFF3399FFVanilla Korean Core |CFFFFFFFF통합 한글화
+## Notes: Korean quests, items, dialogue, readable pages and NPC names for WoW 1.12.1
+## Notes-koKR: 퀘스트·아이템·대화·책·쪽지·NPC 이름을 한글로 표시합니다.
+## SavedVariables: ErrorData, VanillaKoreanCoreDB
+## OptionalDeps: EQL3, Questie-Octo
+## Version: 1.1.0
+## X-Credits: Original Korean quest localization by Lazinism
+Quest\Index_Classic.lua
+Quest\Text_Classic.lua
+Quest\Index_Turtle.lua
+Quest\Text_Turtle.lua
+Core\UI.lua
+Core\Runtime.lua
+Item\Names.lua
+Item\Affixes.lua
+Item\Display.lua
+Dialogue\Text.lua
+Dialogue\Display.lua
+PageText\Text.lua
+PageText\Display.lua
+NPC\Names.lua
+NPC\Tooltip.lua

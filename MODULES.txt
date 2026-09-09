@@ -1,0 +1,37 @@
+VanillaKoreanCore 1.0.0 통합 모듈 구성
+===================================
+
+Core
+- UI.lua: 퀘스트 창 표시 계층
+- Runtime.lua: 퀘스트 번역 적용과 한국어/영어 원문 전환
+
+Quest
+- Index_Classic.lua / Text_Classic.lua: 오리지널 퀘스트
+- Index_Turtle.lua / Text_Turtle.lua: Turtle 계열 커스텀 퀘스트
+
+Item
+- Names.lua: ID 기반 한글·영문 아이템명
+- Affixes.lua: 무작위 접두·접미 효과
+- Display.lua: 아이템 툴팁과 각 UI 표시 계층
+
+Dialogue
+- Text.lua: NPC broadcast/dialogue 번역 데이터
+- Display.lua: 대화창과 채팅 표시 계층
+
+PageText
+- Text.lua: 책·편지·쪽지·일지·석판의 영문→한글 본문 사전
+- Display.lua: ItemTextGetText 읽기 창 한글화와 페이지 전환 처리
+- REPORT.txt: SQL entry 결합·토큰·충돌 검증 결과
+
+NPC
+- Names.lua: creature entry 기준 영문·한글 NPC명
+- Tooltip.lua: 유닛 툴팁 이름 한글화와 영문 병기
+
+DLL (애드온 밖, WoW.exe 폴더에 설치)
+- VanillaKoreanCore.dll: 머리 위 3D 이름표 변환
+- VanillaKoreanCore_NPC.txt: DLL용 영문→한글 사전
+
+NPC 표시 원칙
+- 영문에서 번역한 이름: 한글명* 다음 줄에 (English Name)
+- 처음부터 한글인 이름: 원문 유지, 별표·영문 줄·빈 줄 추가 없음
+- 플레이어와 아이템/주문 툴팁은 NPC 모듈이 처리하지 않음

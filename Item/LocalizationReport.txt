@@ -1,0 +1,80 @@
+LaziKoreanQuest 2.4.7 - TurtleWoW 아이템 번역 전수 검수 보고서
+================================================================
+
+검수 기준
+- 애드온: LaziKoreanQuest 2.4.4 koKR TurtleQuestieMatch
+- 입력 DB: locale_item.sql
+- 입력 SQL SHA-256: 76a0fe98a19cd1edda210f5f08a8ceb7b146db6cfb6f6f92f0b2f07576e56f2f
+- Octo 영문 아이템 DB: RelationshipsQuestAndItemBrowser commit
+  1a525a7ebd5429f60fd0987674ba566dbabab8e8
+- Turtle 공개 아이템/로케일 DB commit
+  479d0d8c2230d661d86cf740325797f361456313
+
+전수 검사 결과
+- SQL 전체 행: 24,489
+- 최종 한글 이름: 24,461
+- 중복 ID: 0
+- SQL 파싱 오류: 0
+- ID별 직접 교정: 857건
+- Octo 영문 ID와 Turtle 공식 한국어 이름이 정확히 대응한 교차 검증: 11,410건
+- [미사용], [4.x 미사용] 잔존: 0건
+- 기존 name_loc1이 비어 있었지만 원문을 확인해 복원한 항목: 3건
+  ID 734, 956, 41442
+- 영문자가 남은 이름은 로마 숫자 등급(II~XII), PvP/NPC/SI:7 같은 고유 약어,
+  제품 모델명과 식별 코드만 유지하도록 별도 검사했습니다.
+
+주요 오역 교정 예
+- 33036 Headsplitter Blunderbuss: 흐이드스프릿텔 브룬델붓스 -> 분골 나팔총
+- 33082 Bloodcaller Decapitator: 브로앋칼렐 데카피타토엘 -> 피소환사의 참수 도끼
+- 33151 Onyxian Whelp Egg: 오느키시안 우엘프 에그 -> 오닉시아 혈족 알
+- 33157 Broodguard Bulwark: 브로앋구알드 브루알크 -> 혈족수호자의 보루검
+- 41859 Supercharger V2.10.3: 수펠치알겔 V 2.10. 3 -> 초강력 충전기 V2.10.3
+- 51932~51936 Firestone/Spellstone/Wrathstone/Voidstone 계열 명칭 정리
+- 55580 Codex of Searing Shot V: 이글거리는 시옷 V의 고서 -> 법전: 이글거리는 사격 V
+- 60422 The Ripper: 잭 더 리퍼 -> 절단기
+- 61019 Wand of the Eclipse: 일식의 지팡이 -> 일식의 마법봉
+- 무기 종류(지팡이/마법봉/도끼/총), 머리/눈/발톱/송곳니 등의 잘못된
+  기계 번역과 깨진 음차를 ID별로 교정했습니다.
+- 완성 아이템과 도안/도면 이름도 같은 용어가 되도록 함께 맞췄습니다.
+
+DB 원문이 비어 있어 유지되는 ID
+- 아래 28개는 제공된 locale_item.sql의 name_loc1이 비어 있고 신뢰할 수 있는
+  동일 ID 원문도 확인되지 않아, 잘못된 이름을 임의 생성하지 않습니다.
+  958, 960, 1078, 1122, 1123, 1124, 1125, 1281, 1323, 1350,
+  1492, 1599, 2003, 2789, 2790, 2791, 2792, 3249, 4620, 5372,
+  5378, 5896, 10594, 12385, 18593, 21276, 42332, 60866
+- 이 항목은 게임 클라이언트가 제공하는 원문 이름을 그대로 표시합니다.
+
+표시 기능
+- 아이템 툴팁 첫 줄: 한글 이름
+- 바로 아래: 회색 (영어 원문)
+- 퀘스트 보상/필요 아이템, 전리품, 상점/재구매, 경매장 목록 이름 한글화
+- 툴팁의 CD: n sec/min/hour 표기를 재사용 대기시간: n초/분/시간으로 한글화
+- 영어 원문이 없거나 이미 한글이면 중복 줄을 만들지 않습니다.
+
+안전성
+- 기존 Lua 6개는 바이트 단위 SHA-256 비교 결과 모두 원본과 동일합니다.
+  QuestText_Classic.lua   e023047f07ede666c8e314ccc63349fb55e5aa2bcf2e7e2523814248bcbb5d4c
+  QuestIndex_Classic.lua  1ba63db151c3d107857f81d204e6bb4c89136ef7f845ccdc893169b2b7295727
+  QuestUI.lua             e0ff61abf641a1bc3a21850b3458db461f76c103171e937465e723d6914a6f1c
+  QuestCore.lua           928ef383f4b3d0e85b4b4bb3688e029f623f1398a73051917c69715323095af6
+  QuestText_Turtle.lua    261758fdc5edc3a0f0b986f72a10f4cc98fe76b6a5162e5a089111090160a449
+  QuestIndex_Turtle.lua   bc526f5ec148f297754ca32a6a67378c9589bba42d1ee8b06c9820d49a627cbb
+- 아이템 실행 코드와 데이터는 Item 폴더에만 있습니다.
+- GetItemInfo, 아이템 링크, 아이템 ID, 서버 데이터와 캐시를 바꾸지 않습니다.
+
+자동 검증
+- Lua 5.1 문법 검사 통과
+- 24,461개 ID의 중복/빈 문자열/UTF-8 검사 통과
+- 857개 교정값 최종 테이블 반영 검사 통과
+- 한글/영어 2줄 툴팁, 중복 방지, 재사용 대기시간 한글화 모의 검사 통과
+- 원본 Lua 무변경 검사 통과(6/6)
+
+설치
+1. 기존 Interface\AddOns\LaziKoreanQuest 폴더를 백업합니다.
+2. 이 압축 파일의 LaziKoreanQuest 폴더로 교체합니다.
+3. 게임을 완전히 종료한 뒤 다시 실행합니다.
+
+참고
+- OctoWoW와 TurtleWoW의 item ID가 같은 항목만 ID 기준으로 연결합니다.
+- 서버가 다른 ID를 쓰거나 제공 DB에 이름이 없으면 게임 원문이 유지됩니다.
